@@ -1,0 +1,8 @@
+# directories
+.vscode
+
+# executables
+ark
+
+# Test files
+*.txt
