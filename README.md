@@ -18,4 +18,4 @@ Ark is a small text editor
 - [ ] Any other future scope
 
 
-**NOTE:** This editor is inspired by the boredom during lockdown in 2020 and [Kilo](https://github.com/antirez/kilo) editor wirtten in C.
+**NOTE:** This editor is inspired by the boredom during lockdown in 2020 and [Kilo](https://github.com/antirez/kilo) editor written in C.
