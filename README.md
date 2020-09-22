@@ -3,6 +3,7 @@ Ark is a small text editor
 
 ![Language](https://img.shields.io/badge/language-C++14-blue)
 [![LICENSE](https://img.shields.io/github/license/octopi-labs/arkeditor)](LICENSE)
+![Build](https://travis-ci.com/octopi-labs/arkeditor.svg?branch=master)
 
 ## TODOs
 - [x] Initial working copy
