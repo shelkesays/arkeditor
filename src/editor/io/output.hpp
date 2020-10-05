@@ -1,7 +1,7 @@
 #ifndef EDITOR_OUTPUT_H
 #define EDITOR_OUTPUT_H
 
-#include "data.hpp"
+#include <data/data.hpp>
 
 void editorDrawRows(struct abuffer *ab);
 

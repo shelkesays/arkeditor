@@ -2,10 +2,10 @@
 
 #include <unistd.h>
 
-#include "macros.hpp"
-#include "data.hpp"
-#include "editorkeys.hpp"
-#include "terminal.hpp"
+#include <constants/macros.hpp>
+#include <constants/editorkeys.hpp>
+#include <data/data.hpp>
+#include <terminal/terminal.hpp>
 
 
 void editorMoveCursor(int key) {

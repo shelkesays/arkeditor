@@ -1,7 +1,7 @@
 #ifndef EDITOR_BUFFER_H
 #define EDITOR_BUFFER_H
 
-#include "data.hpp"
+#include <data/data.hpp>
 
 void abAppend(struct abuffer *ab, const char *s, int len);
 

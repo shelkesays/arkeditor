@@ -3,8 +3,9 @@
 #include <fstream>
 #include <cstring>
 
-#include "data.hpp"
-#include "terminal.hpp"
+#include <data/data.hpp>
+#include <terminal/terminal.hpp>
+#include <operations/operations.hpp>
 
 void editorOpen(std::string filename) {
     std::fstream file;
@@ -14,19 +15,14 @@ void editorOpen(std::string filename) {
     }
 
     std::string line;
-    std::size_t line_len;
-    std::getline(file, line);
-    line_len = line.size();
-    if(line_len != 0) {
+    std::size_t line_len = 0;
+    std::size_t line_cap = 0;
+    while(std::getline(file, line)) {
+        line_len = line.size();
         while(line_len > 0 && (line[line_len - 1] == '\n' || line[line_len - 1] == '\r')) {
             line_len--;
         }
-
-        E.row.size = line_len;
-        E.row.chars = (char *) malloc(line_len + 1);
-        memcpy(E.row.chars, line.c_str(), line_len);
-        E.row.chars[line_len] = '\0';
-        E.numrows = 1;
+        editorAppendRow(line.c_str(), line_len);
     }
     line.clear();
     file.close();

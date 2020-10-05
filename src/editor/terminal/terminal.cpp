@@ -6,9 +6,8 @@
 #include <termios.h>
 #include <unistd.h>
 
-
-#include "editorkeys.hpp"
-#include "data.hpp"
+#include <constants/editorkeys.hpp>
+#include <data/data.hpp>
 
 
 void die(const char *s) {

@@ -34,8 +34,8 @@
 # directories
 .vscode
 
-# executables
-ark
-
 # Test files
 *.txt
+
+# Build directories
+build

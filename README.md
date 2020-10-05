@@ -8,7 +8,7 @@ Ark is a small text editor
 ## TODOs
 - [x] Initial working copy
 - [x] Read first line from file
-- [ ] Read entire file
+- [x] Read entire file
 - [ ] Allow Editing the file
 - [ ] Allow creating new file
 - [ ] Allow save operation

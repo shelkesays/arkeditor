@@ -4,8 +4,8 @@
 #include <string>
 #include <unistd.h>
 
-#include "macros.hpp"
-#include "buffer.hpp"
+#include <constants/macros.hpp>
+#include <data/buffer.hpp>
 
 void editorDrawRows(struct abuffer *ab) {
     for (int line = 0; line < E.screenrows; line++) {
@@ -31,11 +31,11 @@ void editorDrawRows(struct abuffer *ab) {
                 abAppend(ab, "~", 1);
             }
         } else {
-            int len = E.row.size;
+            int len = E.row[line].size;
             if(len > E.screencols) {
                 len = E.screencols;
             }
-            abAppend(ab, E.row.chars, len);
+            abAppend(ab, E.row[line].chars, len);
         }
         
         abAppend(ab, "\x1b[K", 3);
