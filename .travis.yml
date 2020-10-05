@@ -9,7 +9,8 @@ branches:
   only:
     - master
 install:
-  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+  - |
+    if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
       # the install step will take care of deploying a newer cmake version
       # first we create a directory for the CMake binaries
       - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
