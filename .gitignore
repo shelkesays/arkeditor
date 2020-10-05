@@ -35,7 +35,7 @@
 .vscode
 
 # Test files
-*.txt
+lorem.txt
 
 # Build directories
 build
