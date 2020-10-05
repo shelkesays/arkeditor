@@ -18,7 +18,8 @@ jobs:
     - os: osx
 
 install:
-  - sh travis_setup.sh
+  provider: script
+  script: sh travis_setup.sh
     # case $TRAVIS_OS_NAME in linux)
     #   # the install step will take care of deploying a newer cmake version
     #   # first we create a directory for the CMake binaries
