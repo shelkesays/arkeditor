@@ -34,8 +34,8 @@
 # directories
 .vscode
 
-# executables
-ark
-
 # Test files
-*.txt
+lorem.txt
+
+# Build directories
+build

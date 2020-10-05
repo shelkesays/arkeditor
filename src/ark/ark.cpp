@@ -1,18 +1,16 @@
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
-#define _GNU_SOURCE
+#define _GNU_SOURCE 1
 
-
-#include "macros.hpp"
-#include "editorkeys.hpp"
-#include "data.hpp"
-#include "terminal.hpp"
-#include "fileio.hpp"
-#include "buffer.hpp"
-#include "output.hpp"
-#include "input.hpp"
-#include "init.hpp"
-
+#include <constants/macros.hpp>
+#include <constants/editorkeys.hpp>
+#include <data/data.hpp>
+#include <terminal/terminal.hpp>
+#include <io/fileio.hpp>
+#include <data/buffer.hpp>
+#include <io/output.hpp>
+#include <io/input.hpp>
+#include <init/init.hpp>
 
 struct editorConfig E;
 

@@ -4,12 +4,13 @@
 #include <string>
 #include <unistd.h>
 
-#include "macros.hpp"
-#include "buffer.hpp"
+#include <constants/macros.hpp>
+#include <data/buffer.hpp>
 
 void editorDrawRows(struct abuffer *ab) {
     for (int line = 0; line < E.screenrows; line++) {
-        if(line >= E.numrows) {
+        int file_row = line + E.rowoff;
+        if(file_row >= E.numrows) {
             if(E.numrows == 0 && line == E.screenrows / 3) {
                 std::stringstream ss; 
                 ss << "Ark editor -- version " << ARK_VERSION;
@@ -31,11 +32,16 @@ void editorDrawRows(struct abuffer *ab) {
                 abAppend(ab, "~", 1);
             }
         } else {
-            int len = E.row.size;
+            int len = E.row[file_row].size - E.coloff;
+            if(len < 0) {
+                len = 0;
+            }
             if(len > E.screencols) {
                 len = E.screencols;
             }
-            abAppend(ab, E.row.chars, len);
+            std::string line_(E.row[file_row].chars);
+            line_ = std::string(line_.begin() + E.coloff, line_.end());
+            abAppend(ab, line_.c_str(), len);
         }
         
         abAppend(ab, "\x1b[K", 3);
@@ -45,7 +51,24 @@ void editorDrawRows(struct abuffer *ab) {
     }
 }
 
+void editorScroll() {
+    if(E.cy < E.rowoff) {
+        E.rowoff = E.cy;
+    }
+    if(E.cy >= E.rowoff + E.screenrows) {
+        E.rowoff = E.cy - E.screenrows + 1;
+    }
+    if(E.cx < E.coloff) {
+        E.coloff = E.cx;
+    }
+    if(E.cx >= E.coloff + E.screencols) {
+        E.coloff = E.cx - E.screencols + 1;
+    }
+}
+
 void editorRefreshScreen() {
+    editorScroll();
+
     struct abuffer ab = ABUF_INIT;
 
     abAppend(&ab, "\x1b[?25l", 6);
@@ -54,9 +77,8 @@ void editorRefreshScreen() {
 
     editorDrawRows(&ab);
 
-    // char buf[32];
     std::stringstream ss;
-    ss << "\x1b[" << E.cy + 1 << ";" << E.cx + 1 << "H";
+    ss << "\x1b[" << (E.cy - E.rowoff) + 1 << ";" << (E.cx - E.coloff) + 1 << "H";
     abAppend(&ab, ss.str().c_str(), ss.str().size());
 
     // abAppend(&ab, "\x1b[H", 3);
