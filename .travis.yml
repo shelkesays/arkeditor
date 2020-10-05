@@ -7,7 +7,7 @@ compiler:
 os:
   - linux
   - windows
-  - osx
+  # - osx
 
 branches:
   only:
@@ -16,7 +16,7 @@ branches:
 jobs:
   allow_failures:
     - os: 
-      - osx
+      # - osx
       - windows
 
 install:
