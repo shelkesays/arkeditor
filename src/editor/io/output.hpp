@@ -5,6 +5,8 @@
 
 void editorDrawRows(struct abuffer *ab);
 
+void editorScroll();
+
 void editorRefreshScreen();
 
 #endif
